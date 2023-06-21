@@ -1,0 +1,1 @@
+Informacion de https://thingsboard.io/docs/reference/mqtt-api/ 
