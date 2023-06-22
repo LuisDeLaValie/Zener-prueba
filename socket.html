@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+        <script type="text/javascript">
+        function WebSocketAPIExample() {
+            var token = "1Icqq9M1e7HEDzt7g8ip";
+            var entityId = "c35e6a40-0f02-11ee-ae24-771b6d708e64";
+            var webSocket = new WebSocket("wss://demo-thingsboard.io/api/ws/plugins/telemetry?token=" + token);
+            // https://thingsboard.cloud/api/v1/integrations/http/0971bf2e-5368-4832-3c89-dc55b80acfd8
+            
+            
+            if (entityId === "YOUR_DEVICE_ID") {
+                alert("Invalid device id!");
+                console.log("Invalid device id!");
+                webSocket.close();
+            }
+
+            if (token === "YOUR_JWT_TOKEN") {
+                alert("Invalid JWT token!");
+                console.log("Invalid JWT token!");
+                webSocket.close();
+            }
+
+            console.log("credenciales pasadas");
+            webSocket.onopen = function () {
+                var object = {
+                    tsSubCmds: [
+                        {
+                            entityType: "DEVICE",
+                            entityId: entityId,
+                            scope: "LATEST_TELEMETRY",
+                            cmdId: 10
+                        }
+                    ],
+                    historyCmds: [],
+                    attrSubCmds: []
+                };
+                var data = JSON.stringify(object);
+                webSocket.send(data);
+                alert("Message is sent: " + data);
+                console.log("Message is sent: " + data);
+            };
+
+            webSocket.onmessage = function (event) {
+                var received_msg = event.data;
+                alert("Message is received: " + received_msg);
+                console.log("Message is received: " + received_msg);
+            };
+
+            webSocket.onclose = function (event) {
+                console.log(event);
+                alert("Connection is closed!");
+                console.log("Connection is closed!");
+            };
+        }
+    </script>
+
+    </head>
+    <body>
+
+        <div id="sse">
+            <a href="javascript:WebSocketAPIExample()">Run WebSocket</a>
+        </div>
+
+    </body>
+</html>
