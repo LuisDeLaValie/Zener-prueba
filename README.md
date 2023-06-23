@@ -15,6 +15,12 @@ Corrar lso comandos `node sub.js` y `node pub.js` en terminal
 
 # Usar thingsboard swagger
 https://thingsboard.cloud/swagger-ui/#/ 
+
+ThingsBoard proporciona la siguiente API REST para obtener datos de la entidad: 
+
+> NOTA: La API está disponible a través de la interfaz de usuario de Swagger. Consulte la documentación general de la API REST para obtener más detalles. La API es compatible con versiones anteriores de TB v1.0+ y esta es la razón principal por la que las URL de llamadas a la API contienen "complemento".
+
+
 ### get telemetria del dispositivo
 https://thingsboard.cloud/swagger-ui/#/telemetry-controller/getLatestTimeseriesUsingGET
 
