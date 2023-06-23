@@ -1,28 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
+<head>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
         function WebSocketAPIExample() {
-            var token = "1Icqq9M1e7HEDzt7g8ip";
-            var entityId = "c35e6a40-0f02-11ee-ae24-771b6d708e64";
+            var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJURFR4QG91dGxvb2suY29tIiwidXNlcklkIjoiNGViZmJjNzAtMGZjMC0xMWVlLTk0NjItMTkyM2FhZmM0NTVmIiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJzZXNzaW9uSWQiOiI3MmVjODQ2Yy1lZTk3LTQ1MTgtODQ2MS01OTg3ZDUyNTQ4Y2EiLCJpc3MiOiJ0aGluZ3Nib2FyZC5jbG91ZCIsImlhdCI6MTY4NzM5NzI4MSwiZXhwIjoxNjg3NDI2MDgxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBhcnRpZGEiLCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsImlzQmlsbGluZ1NlcnZpY2UiOmZhbHNlLCJwcml2YWN5UG9saWN5QWNjZXB0ZWQiOnRydWUsInRlcm1zT2ZVc2VBY2NlcHRlZCI6dHJ1ZSwidGVuYW50SWQiOiJjYTg4MjEzMC1hYmI2LTExZWQtOWYyOC01MzU4ZTAyZjliODIiLCJjdXN0b21lcklkIjoiMTM4MTQwMDAtMWRkMi0xMWIyLTgwODAtODA4MDgwODA4MDgwIn0.SL6WTk1BpxOGbC0p9lpyCmMrX__t0hgtlpwh6Oq-LfZ7zscfmrpNVq_o-L7JkSCjP5Sw4_crHqI0iFYtS-XKWg";
+            var entityId = "d1842ac0-0fd3-11ee-864d-d7c0592b3d10";
             var webSocket = new WebSocket("wss://demo-thingsboard.io/api/ws/plugins/telemetry?token=" + token);
-            // https://thingsboard.cloud/api/v1/integrations/http/0971bf2e-5368-4832-3c89-dc55b80acfd8
-            
-            
+
             if (entityId === "YOUR_DEVICE_ID") {
                 alert("Invalid device id!");
-                console.log("Invalid device id!");
                 webSocket.close();
             }
 
             if (token === "YOUR_JWT_TOKEN") {
                 alert("Invalid JWT token!");
-                console.log("Invalid JWT token!");
                 webSocket.close();
             }
 
-            console.log("credenciales pasadas");
             webSocket.onopen = function () {
                 var object = {
                     tsSubCmds: [
@@ -39,29 +34,25 @@
                 var data = JSON.stringify(object);
                 webSocket.send(data);
                 alert("Message is sent: " + data);
-                console.log("Message is sent: " + data);
             };
 
             webSocket.onmessage = function (event) {
                 var received_msg = event.data;
                 alert("Message is received: " + received_msg);
-                console.log("Message is received: " + received_msg);
             };
 
             webSocket.onclose = function (event) {
-                console.log(event);
                 alert("Connection is closed!");
-                console.log("Connection is closed!");
             };
         }
     </script>
 
-    </head>
-    <body>
+</head>
+<body>
 
-        <div id="sse">
-            <a href="javascript:WebSocketAPIExample()">Run WebSocket</a>
-        </div>
+<div id="sse">
+    <a href="javascript:WebSocketAPIExample()">Run WebSocket</a>
+</div>
 
-    </body>
+</body>
 </html>
